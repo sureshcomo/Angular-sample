@@ -1,0 +1,59 @@
+<html ng-app="friendApp">
+<head>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript">
+
+        var friendApp = angular.module('friendApp',[]);
+
+        friendApp.controller('friendsController',FriendsController);
+
+        function FriendsController($scope){
+            $scope.friends = [
+                {name:'John', age:25, gender:'boy'},
+                {name:'Jessie', age:30, gender:'girl'},
+                {name:'Johanna', age:28, gender:'girl'},
+                {name:'Joy', age:15, gender:'girl'},
+                {name:'Mary', age:28, gender:'girl'},
+                {name:'Peter', age:95, gender:'boy'},
+                {name:'Sebastian', age:50, gender:'boy'},
+                {name:'Erika', age:27, gender:'girl'},
+                {name:'Patrick', age:40, gender:'boy'},
+                {name:'Samantha', age:60, gender:'girl'}
+            ];
+
+            $scope.addFriend = function(){
+                $scope.friends.push({
+                    name:$scope.friendName,
+                    age:$scope.age,
+                    gender:$scope.gender
+                });
+
+                $scope.friendName = '';
+                $scope.age = '';
+                $scope.gender = '';
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div ng-controller="FriendsController">
+    Name:
+    <input type="text" ng-model="username">
+
+    <div>
+        <ul>
+            <li ng-repeat="friend in friends | filter : username">{{friend.name}} - {{friend.age}}</li>
+        </ul>
+    </div>
+
+    <br/>
+
+    Friend Name: <input type="text" ng-model="friendName">
+    Gender: <input type="text" ng-model="gender">
+    Age: <input type="text" ng-model="age">
+
+    <input type="button" ng-click="addFriend()" value="Add Friend ">
+</div>
+</body>
+</html>

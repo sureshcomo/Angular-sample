@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript">
+        // TODO: implement
+        var testController = function($scope){
+            $scope.firstName = "Suresh";
+            $scope.lastName = "Gara";
+
+            $scope.getFullName = function(){
+                return $scope.firstName +" "+ $scope.lastName;
+            }
+        }
+    </script>
+</head>
+<body ng-app>
+<div ng-controller="testController">
+    <div>First Name = {{ firstName }}</div>
+    <div>Last Name = {{ lastName }}</div>
+    <div>Last Name = <span ng-bind="lastName"></span></div>
+    <hr/>
+    <div>Full Name: {{getFullName()}}</div>
+    <hr/>
+    <div> First Name: <input type="text" ng-model="firstName"/> </div>
+    <div> Last Name: <input type="text" ng-model="lastName"/> </div>
+</div>
+</body>
+</html>
